@@ -1,19 +1,21 @@
 #!/bin/bash
 
 file="random.txt"
+total_commits=36
+max_interval_seconds=10800  
 
-for ((i=1; i<=500; i++))
+for ((i=1; i<=total_commits; i++))
 do
-    # Generate a random commit message
-    commit_message=$("Added something to the file - $i")
 
-    # Add something to the text file
+    interval=$((RANDOM % max_interval_seconds + 1))
+    
     echo "Added something to the file - $i" >> $file
 
-    # Commit the changes
     git add $file
-    git commit -m "$commit_message"
+    git commit -m "Commit $i: Added something to the file"
 
-    echo "Commit $i: $commit_message"
+    echo "Commit $i: Added something to the file"
+    
+    sleep $interval
 done
 
