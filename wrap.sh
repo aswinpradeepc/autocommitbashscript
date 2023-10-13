@@ -11,6 +11,7 @@ do
 
     # Ensure the interval does not exceed the remaining time
     interval=$((RANDOM % remaining_time + 1))
+    echo "Interval: $interval seconds"
 
     sum_intervals=$((sum_intervals + interval))
 
